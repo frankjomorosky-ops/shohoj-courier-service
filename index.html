@@ -1,12 +1,131 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>সহজ কুরিয়ার সার্ভিস</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>সহজ কুরিয়ার সার্ভিস</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f5f8fc;color:#172b4d;line-height:1.7}
+header{background:#063b70;color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.logo{font-size:23px;font-weight:bold}
+nav a{color:white;text-decoration:none;margin:0 9px;font-size:14px}
+.hero{background:linear-gradient(120deg,#063b70,#087caa);color:white;padding:75px 7%;text-align:center}
+.hero h1{font-size:35px;margin-bottom:15px}
+.hero p{font-size:17px;margin-bottom:25px}
+.btn{display:inline-block;background:#ffb52e;color:#173451;padding:12px 25px;border-radius:7px;text-decoration:none;font-weight:bold;border:0;cursor:pointer}
+section{padding:55px 7%;text-align:center}
+h2{font-size:27px;margin-bottom:12px;color:#063b70}
+.sub{color:#68778b;margin-bottom:30px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px}
+.card{background:white;padding:25px;border-radius:12px;box-shadow:0 3px 15px #00000010}
+.card .emoji{font-size:38px}
+.card h3{margin:10px 0;color:#063b70}
+.booking{background:white;max-width:550px;margin:auto;padding:25px;border-radius:12px;box-shadow:0 3px 15px #00000010}
+input,select,textarea{width:100%;padding:13px;margin:9px 0;border:1px solid #ccd5df;border-radius:6px;font-size:15px}
+button{font-size:15px}
+.result{margin-top:15px;color:#087caa;font-weight:bold}
+footer{background:#062b4d;color:white;text-align:center;padding:25px}
+footer a{color:#ffbd43}
+</style>
 </head>
 <body>
-    <h1>সহজ কুরিয়ার সার্ভিসে আপনাকে স্বাগতম!</h1>
-    <p>আমরা দ্রুত ও নিরাপদে আপনার পার্সেল পৌঁছে দিই।</p>
+
+<header>
+<div class="logo">📦 সহজ কুরিয়ার</div>
+<nav>
+<a href="#home">হোম</a>
+<a href="#services">সার্ভিস</a>
+<a href="#booking">বুকিং</a>
+<a href="#tracking">ট্র্যাকিং</a>
+<a href="#contact">যোগাযোগ</a>
+</nav>
+</header>
+
+<div class="hero" id="home">
+<h1>আপনার পার্সেল, আমাদের দায়িত্ব</h1>
+<p>দ্রুত, নিরাপদ ও নির্ভরযোগ্য ডেলিভারি সেবা</p>
+<a class="btn" href="#booking">পার্সেল বুকিং করুন</a>
+</div>
+
+<section id="services">
+<h2>আমাদের সার্ভিস</h2>
+<p class="sub">আপনার প্রয়োজন অনুযায়ী সেরা ডেলিভারি সেবা</p>
+<div class="cards">
+<div class="card">
+<div class="emoji">🏠</div>
+<h3>হোম ডেলিভারি</h3>
+<p>আপনার দরজায় পার্সেল পৌঁছে দেওয়ার সুবিধা।</p>
+</div>
+<div class="card">
+<div class="emoji">⚡</div>
+<h3>এক্সপ্রেস ডেলিভারি</h3>
+<p>জরুরি পার্সেলের জন্য দ্রুত ডেলিভারি।</p>
+</div>
+<div class="card">
+<div class="emoji">🛡️</div>
+<h3>নিরাপদ পরিবহন</h3>
+<p>যত্নের সঙ্গে আপনার পার্সেল পরিবহন।</p>
+</div>
+</div>
+</section>
+
+<section id="booking" style="background:#eaf2fa">
+<h2>পার্সেল বুকিং</h2>
+<p class="sub">নিচের ফর্মটি পূরণ করে বুকিংয়ের অনুরোধ জানান।</p>
+<div class="booking">
+<form onsubmit="book(event)">
+<input id="name" placeholder="আপনার নাম" required>
+<input id="phone" type="tel" placeholder="মোবাইল নম্বর" required>
+<input id="pickup" placeholder="পার্সেল সংগ্রহের ঠিকানা" required>
+<input id="destination" placeholder="ডেলিভারির ঠিকানা" required>
+<select id="weight">
+<option value="">পার্সেলের ওজন নির্বাচন করুন</option>
+<option>১ কেজির মধ্যে</option>
+<option>১-৩ কেজি</option>
+<option>৩-৫ কেজি</option>
+<option>৫ কেজির বেশি</option>
+</select>
+<button class="btn" type="submit">বুকিং অনুরোধ পাঠান</button>
+</form>
+<div class="result" id="bookingResult"></div>
+</div>
+</section>
+
+<section id="tracking">
+<h2>পার্সেল ট্র্যাকিং</h2>
+<p class="sub">আপনার ট্র্যাকিং নম্বর দিয়ে পার্সেল খুঁজুন।</p>
+<div class="booking">
+<input id="track" placeholder="ট্র্যাকিং নম্বর লিখুন">
+<button class="btn" onclick="trackParcel()">ট্র্যাক করুন</button>
+<div class="result" id="trackResult"></div>
+</div>
+</section>
+
+<section id="contact" style="background:#eaf2fa">
+<h2>যোগাযোগ করুন</h2>
+<p>📞 মোবাইল: আপনার ফোন নম্বর যুক্ত করুন</p>
+<p>📍 ঠিকানা: আপনার অফিসের ঠিকানা যুক্ত করুন</p>
+<p>✉️ ইমেইল: আপনার ইমেইল যুক্ত করুন</p>
+</section>
+
+<footer>
+<p>© 2026 সহজ কুরিয়ার সার্ভিস</p>
+<p>আপনার বিশ্বস্ত ডেলিভারি পার্টনার ❤️</p>
+</footer>
+
+<script>
+function book(e){
+e.preventDefault();
+document.getElementById('bookingResult').innerText=
+'ধন্যবাদ! আপনার বুকিংয়ের তথ্য নেওয়া হয়েছে। এটি এখনো পরীক্ষামূলক ফর্ম।';
+}
+function trackParcel(){
+let v=document.getElementById('track').value.trim();
+document.getElementById('trackResult').innerText=
+v?'এই নম্বরের কোনো ডেলিভারি তথ্য এখনো পাওয়া যায়নি।':'অনুগ্রহ করে ট্র্যাকিং নম্বর লিখুন।';
+}
+</script>
 </body>
 </html>
